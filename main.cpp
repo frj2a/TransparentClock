@@ -52,3 +52,30 @@ int main(int argc, char *argv[])
     return app.exec();
 }
 
+
+/* old one, for Qt 6
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
+#include <QIconEngine>
+#include <QIcon>
+
+int main(int argc, char *argv[])
+{
+	QCoreApplication::setOrganizationName("frares@gmail.com");
+	QCoreApplication::setApplicationName("Transparent Clock");
+	QCoreApplication::setApplicationVersion("0.4.0");
+	QIcon icon(":/icon/clock");
+
+	QGuiApplication app(argc, argv);
+
+	QQmlApplicationEngine engine;
+	QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
+					 &app, []() { QCoreApplication::exit(-1); },
+	Qt::QueuedConnection);
+	engine.loadFromModule("TransparentClock", "main");
+
+	app.setWindowIcon(icon);
+
+	return app.exec();
+}
+*/

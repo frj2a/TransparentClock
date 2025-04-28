@@ -36,26 +36,25 @@ Window {
     property bool internationalTime: false // true for international time, false for local
 
     function timeChanged() {
-        var date = new Date
-        hours = internationalTime ? date.getUTCHours() + Math.floor(
-                                        clock.shift) : date.getHours()
+        var date = new Date;
+        hours = internationalTime ? date.getUTCHours() + Math.floor(clock.shift) : date.getHours()
         night = (hours < 7 || hours > 19)
-        minutes = internationalTime ? date.getUTCMinutes(
-                                          ) + ((clock.shift % 1) * 60) : date.getMinutes()
-        seconds = date.getUTCSeconds()
+        minutes = internationalTime ? date.getUTCMinutes() + ((clock.shift % 1) * 60) : date.getMinutes()
+        seconds = date.getUTCSeconds();
 
         // seconds++
         // minutes = seconds/10
         // hours = minutes/4
+
         second.rotationSecondAngle = clock.seconds * 6
         minute.rotationMinuteAngle = clock.minutes * 6
         hour.rotationHourAngle = (clock.hours * 30) + (clock.minutes * 0.5)
     }
 
     Timer {
-        interval: 100
-        running: true
-        repeat: true
+        interval: 100;
+        running: true;
+        repeat: true;
         onTriggered: clock.timeChanged()
     }
 
@@ -82,54 +81,18 @@ Window {
 
     ListModel {
         id: inclinationModel
-        ListElement {
-            angle: 0
-            size: "big"
-        }
-        ListElement {
-            angle: 30
-            size: "small"
-        }
-        ListElement {
-            angle: 60
-            size: "small"
-        }
-        ListElement {
-            angle: 90
-            size: "big"
-        }
-        ListElement {
-            angle: 120
-            size: "small"
-        }
-        ListElement {
-            angle: 150
-            size: "small"
-        }
-        ListElement {
-            angle: 180
-            size: "big"
-        }
-        ListElement {
-            angle: 210
-            size: "small"
-        }
-        ListElement {
-            angle: 240
-            size: "small"
-        }
-        ListElement {
-            angle: 270
-            size: "big"
-        }
-        ListElement {
-            angle: 300
-            size: "small"
-        }
-        ListElement {
-            angle: 330
-            size: "small"
-        }
+        ListElement { angle: 0 ; size: "big"}
+        ListElement { angle: 30 ; size: "small"}
+        ListElement { angle: 60 ; size: "small"}
+        ListElement { angle: 90 ; size: "big"}
+        ListElement { angle: 120 ; size: "small"}
+        ListElement { angle: 150 ; size: "small"}
+        ListElement { angle: 180 ; size: "big"}
+        ListElement { angle: 210 ; size: "small"}
+        ListElement { angle: 240 ; size: "small"}
+        ListElement { angle: 270 ; size: "big"}
+        ListElement { angle: 300 ; size: "small"}
+        ListElement { angle: 330 ; size: "small"}
     }
 
     Repeater {
@@ -171,11 +134,7 @@ Window {
             origin.y: 64 - hour.y
             angle: 0
             Behavior on angle {
-                SpringAnimation {
-                    spring: 2
-                    damping: 0.2
-                    modulus: 360
-                }
+                SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
             }
         }
     }
@@ -199,11 +158,7 @@ Window {
             origin.y: 64 - minute.y
             angle: 0
             Behavior on angle {
-                SpringAnimation {
-                    spring: 2
-                    damping: 0.2
-                    modulus: 360
-                }
+                SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
             }
         }
     }
@@ -226,11 +181,7 @@ Window {
             origin.y: 64 - second.y
             angle: 0
             Behavior on angle {
-                SpringAnimation {
-                    spring: 2
-                    damping: 0.2
-                    modulus: 360
-                }
+                SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
             }
         }
     }
