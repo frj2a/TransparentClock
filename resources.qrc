@@ -1,0 +1,9 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/">
+        <file>main.qml</file>
+    </qresource>
+    <qresource prefix="/icon">
+        <file alias="clock">Resources/clock128.png</file>
+    </qresource>
+</RCC>
